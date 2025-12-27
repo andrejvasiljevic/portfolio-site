@@ -1,10 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>My Portfolio</title>
 <style>
+    html {
+    scroll-behavior: smooth;
+    }
+
     :root {
         --primary-color: #CBA6F7; /* baby purple */
         --accent-color: #B68CE0;
@@ -30,19 +35,26 @@
     }
 
     body {
-        background-color: var(--bg-color);
-        color: var(--text-color);
-        line-height: 1.6;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    padding-top: 80px; /* adjust based on header height */
     }
 
+
     header {
-        background-color: var(--header-color);
-        padding: 20px 0;
-        text-align: center;
-        color: white;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        position: relative;
+    background-color: var(--header-color);
+    padding: 20px 0;
+    text-align: center;
+    color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: fixed;       /* make header fixed */
+    top: 0;                /* stick to top */
+    left: 0;
+    width: 100%;           /* full width */
+    z-index: 1000;         /* stay on top of other elements */
     }
+
 
     header h1 {
         font-size: 2.5rem;
@@ -137,19 +149,153 @@
 <body>
 
 <header>
-    <h1>Andrej Vasiljević</h1>
-    <nav>
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
+    <nav >
+    <a href="#top">Home</a>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
     </nav>
-    <button class="theme-toggle" onclick="toggleTheme()">Dark Mode</button>
-</header>
 
+    <button class="theme-toggle" onclick="toggleTheme()">Light Mode</button>
+</header>
 <section id="about">
     <h2>About Me</h2>
-    <p>Hi! I'm Andrej, a developer passionate about creating beautiful and functional web projects. I love working with modern technologies and making interfaces look awesome.</p>
+
+    <!-- Personal Info -->
+    <div class="personal-info">
+        <p><strong>Name:</strong> Andrej Vasiljević</p>
+        <p><strong>Age:</strong> <span id="age"></span></p>
+        <p><strong>Location:</strong> Kragujevac, Serbia</p>
+        <p><strong>Occupation:</strong> Developer & AI Enthusiast</p>
+    </div>
+
+    <!-- Bio / Programming Intentions -->
+    <div class="bio">
+        <p>
+            I’m passionate about creating innovative projects in web development, AI, and deep learning. 
+            I love experimenting with new technologies, from building interactive web interfaces to designing AI models that analyze music, emotions, or even control 3D objects.
+        </p>
+        <p>
+            I train consistently in both coding and physical fitness—working out 6 days a week—and I approach projects with the same intensity and discipline. 
+            My work combines creativity and technical skill, whether I'm designing a portfolio site, developing AI-powered applications, or optimizing complex algorithms for performance.
+        </p>
+        <p>
+            Currently, I enjoy exploring AI applications in music, games, and simulations. 
+            My goal is to continue developing tools that blend functionality with creativity, building projects that are not just functional but also visually appealing and impactful.
+        </p>
+    </div>
 </section>
+
+<style>
+    .personal-info, .bio {
+        max-width: 800px;
+        margin: 0 auto 30px auto;
+        padding: 10px 20px;
+        border-left: 4px solid var(--accent-color);
+        background-color: rgba(198, 174, 242, 0.1); /* subtle highlight */
+        border-radius: 8px;
+    }
+
+    .personal-info p, .bio p {
+        margin-bottom: 10px;
+    }
+</style>
+
+<section id="skills">
+    <h2>Everything I Know</h2>
+    <div class="skills-grid">
+        <div class="skill">
+            <i class="devicon-python-plain colored skill-icon"></i>
+            <h3>Python</h3>
+            <p>Used for AI/Deep Learning, data analysis, and building scripts. Experienced with PyTorch, NumPy, and various ML libraries.</p>
+        </div>
+        <div class="skill">
+            <i class="devicon-javascript-plain colored skill-icon"></i>
+            <h3>JavaScript</h3>
+            <p>Front-end development for interactive web applications. Knowledge of DOM manipulation, events, and dynamic interfaces.</p>
+        </div>
+        <div class="skill">
+            <i class="devicon-html5-plain colored skill-icon"></i>
+            <i class="devicon-css3-plain colored skill-icon"></i>
+            <h3>HTML & CSS</h3>
+            <p>Creating responsive, visually appealing web pages with modern layouts and animations.</p>
+        </div>
+        <div class="skill">
+            <i class="devicon-pytorch-original colored skill-icon"></i>
+            <h3>PyTorch & AI</h3>
+            <p>Experience building AI models for music recognition, emotion detection, and game simulations. Skilled in CNNs, LSTMs, and 3D simulations.</p>
+        </div>
+        <div class="skill">
+            <i class="devicon-git-plain colored skill-icon"></i>
+            <i class="devicon-github-original colored skill-icon"></i>
+            <h3>Git & GitHub</h3>
+            <p>Version control and project management. Comfortable with branching, merging, and pushing projects online.</p>
+        </div>
+    </div>
+    
+</section>
+
+<style>
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.skill {
+    background-color: var(--bg-color);
+    border: 1px solid var(--accent-color);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+
+    display: flex;           /* use flexbox */
+    flex-direction: column;  /* stack vertically */
+    align-items: center;     /* center horizontally */
+    text-align: center;      /* center text */
+}
+
+
+.skill:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.skill h3 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+.skill-icon {
+    font-size: 40px;
+    margin-bottom: 10px;
+    display: block;
+}
+
+</style>
+
+
+<script>
+// Calculate age from birthdate
+function calculateAge(birthDateString) {
+    const today = new Date();
+    const birthDate = new Date(birthDateString);
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const monthDiff = today.getMonth() - birthDate.getMonth();
+    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+    }
+    return age;
+}
+
+// Set age in the HTML
+document.getElementById('age').textContent = calculateAge('2007-12-07');
+</script>
+
 
 <section id="projects">
     <h2>Projects</h2>
@@ -185,12 +331,19 @@
 
 <script>
 function toggleTheme() {
-    if(document.documentElement.getAttribute('data-theme') === 'dark') {
-        document.documentElement.removeAttribute('data-theme');
+    const html = document.documentElement;
+    const button = document.querySelector('.theme-toggle');
+    
+    if(html.getAttribute('data-theme') === 'dark') {
+        html.removeAttribute('data-theme');
+        button.textContent = 'Dark Mode';
     } else {
-        document.documentElement.setAttribute('data-theme', 'dark');
+        html.setAttribute('data-theme', 'dark');
+        button.textContent = 'Light Mode';
     }
 }
+
+
 </script>
 
 </body>
